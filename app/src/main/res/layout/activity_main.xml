@@ -7,17 +7,18 @@
     android:background="@color/white"
     tools:context=".MainActivity">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="72sp"
         android:orientation="vertical">
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="171sp"
+            android:layout_centerHorizontal="true"
             android:text="Судоку"
+            android:layout_marginTop="78sp"
+            android:layout_alignParentTop="true"
             android:textAlignment="center"
             android:textColor="@color/text"
             android:textSize="54sp"
@@ -28,6 +29,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="140sp"
+            android:layout_centerInParent="true"
             app:srcCompat="@drawable/sudoku" />
 
         <ImageButton
@@ -35,8 +37,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/white"
-            android:layout_gravity="bottom"
+            android:layout_marginBottom="78sp"
+            android:layout_alignParentBottom="true"
             app:srcCompat="@drawable/start" />
 
-    </LinearLayout>
+    </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
