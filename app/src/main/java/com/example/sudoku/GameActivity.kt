@@ -3,6 +3,7 @@ package com.example.sudoku
 import android.content.Intent
 import android.os.Bundle
 import android.os.SystemClock
+import android.view.animation.AnimationUtils
 import android.widget.Chronometer
 import android.widget.ImageButton
 import android.widget.Toast
@@ -19,6 +20,8 @@ class GameActivity : AppCompatActivity() {
         var startTime = SystemClock.elapsedRealtime()
         chronometer.setBase(startTime)
         chronometer.start()
+        // Animation
+        val animAlpha = AnimationUtils.loadAnimation(this, R.anim.alpha);
         // Buttons
         var home = findViewById<ImageButton>(R.id.home);
         var write = findViewById<ImageButton>(R.id.write);
@@ -26,6 +29,7 @@ class GameActivity : AppCompatActivity() {
         var restart = findViewById<ImageButton>(R.id.restart);
         // OnClickListeners
         home.setOnClickListener{
+            it.startAnimation(animAlpha)
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
             finish()
@@ -39,6 +43,7 @@ class GameActivity : AppCompatActivity() {
             delete.setImageResource(R.drawable.delete_active)
         }
         restart.setOnClickListener{
+            it.startAnimation(animAlpha)
             write.setImageResource(R.drawable.write)
             delete.setImageResource(R.drawable.delete)
             Toast.makeText(this, "restart", 3).show()
