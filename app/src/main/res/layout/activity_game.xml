@@ -23,31 +23,26 @@
             android:textColor="@color/text"
             android:fontFamily="@font/robotoserif"/>
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:src="@drawable/grid" />
-
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
+            android:layout_marginBottom="10sp"
             android:orientation="horizontal">
             <ImageButton
                 android:id="@+id/home"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@color/white"
-                android:layout_marginRight="40sp"
+                android:layout_marginRight="30sp"
                 app:srcCompat="@drawable/home" />
 
             <ImageButton
                 android:id="@+id/write"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="40sp"
+                android:layout_marginRight="30sp"
                 android:background="@color/white"
                 app:srcCompat="@drawable/write" />
             <ImageButton
@@ -55,7 +50,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@color/white"
-                android:layout_marginRight="40sp"
+                android:layout_marginRight="30sp"
                 app:srcCompat="@drawable/delete" />
             <ImageButton
                 android:id="@+id/restart"
