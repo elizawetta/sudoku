@@ -25,6 +25,7 @@ class GameActivity : AppCompatActivity() {
     var drawPressed: Int? = null;
     var delete_pressed = false
     var n = 81 - 42;
+    var isWin = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -110,6 +111,7 @@ class GameActivity : AppCompatActivity() {
                 }
                 if(gameClass.checkSolution(soltuion.toTypedArray())){
                     chronometer.stop()
+                    isWin = true
                     Toast.makeText(this, "WINNER!!!", 3).show()
                 }
                 else{
@@ -242,6 +244,12 @@ class GameActivity : AppCompatActivity() {
             delete_pressed = !delete_pressed
         }
         restart.setOnClickListener{
+            if(isWin){
+                it.startAnimation(animAlpha)
+                val intent = Intent(this, GameActivity::class.java)
+                finish()
+                startActivity(intent)
+            }
             for (i in 0..18){
                 if(i % 2 == 0) continue
                 var lin = grid.getChildAt(i)
