@@ -7,28 +7,43 @@
     android:background="@color/white"
     tools:context=".GameActivity">
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:gravity="bottom"
+        android:weightSum="892"
         android:orientation="vertical">
 
         <Chronometer
             android:id="@+id/chronometer"
+            android:layout_weight="216"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="78sp"
+            android:layout_marginTop="10sp"
             android:layout_centerHorizontal="true"
             android:textSize="54sp"
             android:textColor="@color/text"
             android:fontFamily="@font/robotoserif"/>
-        <LinearLayout
-            android:id="@+id/num_buttons"
+        <GridLayout
+            android:id="@+id/grid"
+            android:layout_marginHorizontal="5sp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:weightSum="90"
-            android:layout_marginBottom="63sp"
-            android:layout_above="@+id/main_buttons">
+            android:background="@color/black"
+            android:columnCount="1">
+
+        </GridLayout>
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="200"/>
+        <LinearLayout
+            android:id="@+id/num_buttons"
+            android:layout_weight="171"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="90">
             <ImageButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -99,10 +114,9 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:id="@+id/main_buttons"
+            android:layout_weight="83"
             android:weightSum="3"
-            android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
-            android:layout_marginBottom="10sp"
             android:orientation="horizontal">
             <ImageButton
                 android:id="@+id/home"
@@ -127,6 +141,6 @@
                 app:srcCompat="@drawable/restart" />
         </LinearLayout>
 
-    </RelativeLayout>
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

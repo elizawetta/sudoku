@@ -1,16 +1,15 @@
 package com.example.sudoku
 
 import android.content.Intent
-import android.graphics.drawable.Drawable
-import android.media.Image
 import android.os.Bundle
 import android.os.SystemClock
 import android.view.View
 import android.view.animation.AnimationUtils
+import android.widget.Button
 import android.widget.Chronometer
+import android.widget.GridLayout
 import android.widget.ImageButton
 import android.widget.LinearLayout
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 
 
@@ -20,6 +19,26 @@ class GameActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_game)
+        // Layout Parameters
+        val LinLayoutParams = LinearLayout.LayoutParams(
+            LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT)
+        val ButtonLayoutParams = LinearLayout.LayoutParams(
+            LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT, 10f)
+        var grid = findViewById<GridLayout>(R.id.grid)
+        // creating grid
+        for (i in 0..8){
+            var linlay = LinearLayout(this)
+            linlay.layoutParams = LinLayoutParams
+            linlay.weightSum = 90f
+            for (j in 0..8){
+                var btn = Button(this)
+                btn.text = i.toString() + j.toString()
+                btn.layoutParams = ButtonLayoutParams
+                btn.setBackgroundColor(getColor(R.color.white))
+                linlay.addView(btn)
+            }
+            grid.addView(linlay)
+        }
         // Chronometer
         var chronometer = findViewById<Chronometer>(R.id.chronometer)
         chronometer.setFormat("%m:%s")
