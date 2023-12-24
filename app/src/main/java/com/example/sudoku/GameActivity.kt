@@ -10,6 +10,7 @@ import android.widget.Chronometer
 import android.widget.GridLayout
 import android.widget.ImageButton
 import android.widget.LinearLayout
+import android.widget.Space
 import androidx.appcompat.app.AppCompatActivity
 
 
@@ -24,17 +25,52 @@ class GameActivity : AppCompatActivity() {
             LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT)
         val ButtonLayoutParams = LinearLayout.LayoutParams(
             LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT, 10f)
+        val scale = this.getResources().getDisplayMetrics().scaledDensity;
+        val layoutParams_3 = LinearLayout.LayoutParams(
+            LinearLayout.LayoutParams.MATCH_PARENT,
+            (3f * scale).toInt())
+        val layoutParams_2 = LinearLayout.LayoutParams(
+            LinearLayout.LayoutParams.MATCH_PARENT,
+            (2f * scale).toInt())
+        val layoutParams_1 = LinearLayout.LayoutParams(
+            LinearLayout.LayoutParams.MATCH_PARENT,
+            (1f * scale).toInt())
         var grid = findViewById<GridLayout>(R.id.grid)
         // creating grid
-        for (i in 0..8){
+        for (i in 0..18){
+            if (i % 2 == 0){
+                var sp = Space(this)
+                if (i == 0 || i == 18){
+                    sp.layoutParams = layoutParams_3
+                }
+                else if(i % 3 == 0){
+                    sp.layoutParams = layoutParams_2
+                }
+                else{
+                    sp.layoutParams = layoutParams_1
+                }
+                grid.addView(sp)
+                continue
+            }
             var linlay = LinearLayout(this)
             linlay.layoutParams = LinLayoutParams
             linlay.weightSum = 90f
             for (j in 0..8){
                 var btn = Button(this)
-                btn.text = i.toString() + j.toString()
+                btn.text = (i / 2).toString() + j.toString()
                 btn.layoutParams = ButtonLayoutParams
-                btn.setBackgroundColor(getColor(R.color.white))
+                if (j == 0){
+                    btn.background = getDrawable(R.drawable.tho)
+                }
+                else if(j == 8){
+                    btn.background = getDrawable(R.drawable.th)
+                }
+                else if(j == 2 || j == 5){
+                    btn.background = getDrawable(R.drawable.tw)
+                }
+                else{
+                    btn.background = getDrawable(R.drawable.one)
+                }
                 linlay.addView(btn)
             }
             grid.addView(linlay)
